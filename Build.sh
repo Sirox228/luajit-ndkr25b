@@ -1,4 +1,6 @@
 NDK=${ANDROID_NDK_HOME}
+ls
+pwd
 
 cd luajit
 cd ../
