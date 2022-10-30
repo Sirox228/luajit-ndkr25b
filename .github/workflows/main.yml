@@ -1,0 +1,41 @@
+name: Build
+
+# Controls when the workflow will run
+on: [workflow_dispatch]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          sudo chmod -R 777 *
+          ./Build.sh
+          
+      - uses: actions/upload-artifact@v2
+        with:
+          name: luajit-arm64-v8a
+          path: obj/local/arm64-v8a/libluajit.a
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: luajit-armeabi-v7a
+          path: obj/local/armeabi-v7a/libluajit.a
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: luajit-x86
+          path: obj/local/x86/libluajit.a
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: luajit-x86_64
+          path: obj/local/x86_64/libluajit.a
