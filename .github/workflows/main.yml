@@ -18,7 +18,6 @@ jobs:
       - name: Build
         run: |
           sudo chmod -R 777 *
-          cp -f luajit/src/lj_def.h luajit/src/host/lj_def.h
           ${ANDROID_NDK_HOME}/ndk-build NDK_PROJECT_PATH=./ NDK_APPLICATION_MK=./Application.mk APP_BUILD_SCRIPT=./Android.mk
           
       - uses: actions/upload-artifact@v2
