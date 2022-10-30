@@ -1,5 +1,5 @@
 NDK=${ANDROID_NDK_HOME}
-ls
+ls -l
 pwd
 
 cd luajit
