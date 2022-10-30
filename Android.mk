@@ -20,12 +20,12 @@ LOCAL_CPP_INCLUDES := \
 LJP := $(LOCAL_PATH)/luajit/src
 
 LOCAL_SRC_FILES := \
-    $(LJP)/host/minilua.c \
-    $(LJP)/host/buildvm_peobj.c \
-    $(LJP)/host/buildvm_lib.c \
-    $(LJP)/host/buildvm_fold.c \
-    $(LJP)/host/buildvm_asm.c \
-    $(LJP)/host/buildvm.c \
+    $(LJP)/minilua.c \
+    $(LJP)/buildvm_peobj.c \
+    $(LJP)/buildvm_lib.c \
+    $(LJP)/buildvm_fold.c \
+    $(LJP)/buildvm_asm.c \
+    $(LJP)/buildvm.c \
     $(LJP)/lib_aux.c \
     $(LJP)/lib_base.c \
     $(LJP)/lib_bit.c \
