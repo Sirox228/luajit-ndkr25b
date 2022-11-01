@@ -21,7 +21,7 @@ case "$1" in
         export LD=$TOOLCHAIN/bin/ld
         export RANLIB=$TOOLCHAIN/bin/llvm-ranlib
         export STRIP=$TOOLCHAIN/bin/llvm-strip
-        make -C luajit HOST_CC=${CC} CFLAGS="-O2" HOST_CFLAGS="-O2" TARGET_CFLAGS="${CFLAGS}" CROSS=${CROSSTC} DESTDIR="${DEST}"
+        make -C luajit HOST_CC=${CC} CFLAGS="-O2 -mfloat-abi=softfp -mfpu=neon -march=armv7-a" HOST_CFLAGS="-O2 -mfloat-abi=softfp -mfpu=neon -march=armv7-a" TARGET_CFLAGS="${CFLAGS}" CROSS=${CROSSTC} DESTDIR="${DEST}"
         ;;
     arm64-v8a)
         export TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/$HOST_ARCH
@@ -36,7 +36,7 @@ case "$1" in
         export LD=$TOOLCHAIN/bin/ld
         export RANLIB=$TOOLCHAIN/bin/llvm-ranlib
         export STRIP=$TOOLCHAIN/bin/llvm-strip
-        make -C luajit HOST_CC=${CC} CFLAGS="-O2" HOST_CFLAGS="-O2" TARGET_CFLAGS="${CFLAGS}" CROSS=${CROSSTC} DESTDIR="${DEST}"
+        make -C luajit HOST_CC=${CC} CFLAGS="-O2 -mfloat-abi=softfp -mfpu=neon -march=armv8-a" HOST_CFLAGS="-O2 -mfloat-abi=softfp -mfpu=neon -march=armv8-a" TARGET_CFLAGS="${CFLAGS}" CROSS=${CROSSTC} DESTDIR="${DEST}"
         ;;
     x86-android)
         export TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/$HOST_ARCH
@@ -51,7 +51,7 @@ case "$1" in
         export LD=$TOOLCHAIN/bin/ld
         export RANLIB=$TOOLCHAIN/bin/llvm-ranlib
         export STRIP=$TOOLCHAIN/bin/llvm-strip
-        make -C luajit HOST_CC=${CC} CFLAGS="-O2" HOST_CFLAGS="-O2" TARGET_CFLAGS="${CFLAGS}" CROSS=${CROSSTC} DESTDIR="${DEST}"
+        make -C luajit HOST_CC=${CC} CFLAGS="-O2 -mfloat-abi=softfp -march=i686" HOST_CFLAGS="-O2 -mfloat-abi=softfp -march=i686" TARGET_CFLAGS="${CFLAGS}" CROSS=${CROSSTC} DESTDIR="${DEST}"
         ;;
     x86_64-android)
         export TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/$HOST_ARCH
@@ -66,7 +66,7 @@ case "$1" in
         export LD=$TOOLCHAIN/bin/ld
         export RANLIB=$TOOLCHAIN/bin/llvm-ranlib
         export STRIP=$TOOLCHAIN/bin/llvm-strip
-        make -C luajit HOST_CC=${CC} CFLAGS="-O2" HOST_CFLAGS="-O2" TARGET_CFLAGS="${CFLAGS}" CROSS=${CROSSTC} DESTDIR="${DEST}"
+        make -C luajit HOST_CC=${CC} CFLAGS="-O2 -mfloat-abi=softfp" HOST_CFLAGS="-O2 -mfloat-abi=softfp" TARGET_CFLAGS="${CFLAGS}" CROSS=${CROSSTC} DESTDIR="${DEST}"
         ;;
     x86_64-linux)
         export CFLAGS="-O2"
