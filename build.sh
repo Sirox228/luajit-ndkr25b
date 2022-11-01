@@ -4,6 +4,9 @@ DEST=$(pwd)/build/$1
 
 HOST_ARCH="linux-x86_64"
 
+rm luajit/src/Makefile
+cp -f Makefile luajit/src/Makefile
+
 case "$1" in
     clean)
         make -C luajit clean
