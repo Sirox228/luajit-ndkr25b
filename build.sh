@@ -7,6 +7,8 @@ HOST_ARCH="linux-x86_64"
 rm luajit/src/Makefile
 cp -f Makefile luajit/src/Makefile
 
+$NDK/toolchains/llvm/prebuilt/$HOST_ARCH/bin/ld --help
+
 case "$1" in
     clean)
         make -C luajit clean
