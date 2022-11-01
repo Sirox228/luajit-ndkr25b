@@ -19,7 +19,7 @@ case "$1" in
         export CC=clang
         export CROSSTC=$TOOLCHAIN/bin/$TARGET$API-
         # if needed, you can try setting this as $CC or you can steal GAS AS from old ndk such as r15c and point to it there
-        export AS=$(pwd)/arm-linux-androideabi-as
+        export AS=$TOOLCHAIN/bin/llvm-as
         export CXX=$TOOLCHAIN/bin/$TARGET$API-clang++
         export RANLIB=$TOOLCHAIN/bin/llvm-ranlib
         export STRIP=$TOOLCHAIN/bin/llvm-strip
@@ -48,7 +48,7 @@ case "$1" in
         export CC=clang
         export CROSSTC=$TOOLCHAIN/bin/$TARGET$API-
         # if needed, you can try setting this as $CC or you can steal GAS AS from old ndk such as r15c and point to it there
-        export AS=$(pwd)/i686-linux-android-as
+        export AS=$TOOLCHAIN/bin/llvm-as
         export CXX=$TOOLCHAIN/bin/$TARGET$API-clang++
         export LD=$TOOLCHAIN/bin/ld
         export RANLIB=$TOOLCHAIN/bin/llvm-ranlib
