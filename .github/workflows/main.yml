@@ -13,7 +13,6 @@ jobs:
           sudo apt update -y
           sudo apt upgrade -y
           sudo apt install make -y
-          sudo apt install clang -y
           sudo apt install gcc-multilib -y
           sudo apt install dos2unix -y
           git clone https://github.com/LuaJIT/LuaJIT luajit
