@@ -25,7 +25,7 @@ case "$1" in
         export CXX=$TOOLCHAIN/bin/$TARGET$API-clang++
         export RANLIB=$TOOLCHAIN/bin/llvm-ranlib
         export STRIP=$TOOLCHAIN/bin/llvm-strip
-        make -C luajit HOST_CC="${CC} -m32" STATIC_CC=${CROSSTC}${CC} DYNAMIC_CC=${CROSSTC}${CC} TARGET_LD=$TOOLCHAIN/bin/ld CFLAGS="-O2" HOST_CFLAGS="-O2" TARGET_CFLAGS="${CFLAGS}" CROSS=${CROSSTC} DESTDIR="${DEST}"
+        make -C luajit CC=${CC} HOST_CC="${CC} -m32" STATIC_CC=${CROSSTC}${CC} DYNAMIC_CC=${CROSSTC}${CC} TARGET_LD=$TOOLCHAIN/bin/ld CFLAGS="-O2" HOST_CFLAGS="-O2" TARGET_CFLAGS="${CFLAGS}" CROSS=${CROSSTC} DESTDIR="${DEST}"
         ;;
     arm64-v8a)
         export TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/$HOST_ARCH
