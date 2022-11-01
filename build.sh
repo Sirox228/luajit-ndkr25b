@@ -45,7 +45,7 @@ case "$1" in
         export CC=clang
         export CROSSTC=$TOOLCHAIN/bin/$TARGET$API-
         # if needed, you can try setting this as $CC or you can steal GAS AS from old ndk such as r15c and point to it there
-        export AS=$TOOLCHAIN/bin/llvm-as
+        export AS=${CROSSTC}${CC}
         export CXX=$TOOLCHAIN/bin/$TARGET$API-clang++
         export LD=$TOOLCHAIN/bin/ld
         export RANLIB=$TOOLCHAIN/bin/llvm-ranlib
@@ -60,7 +60,7 @@ case "$1" in
         export CC=clang
         export CROSSTC=$TOOLCHAIN/bin/$TARGET$API-
         # if needed, you can try setting this as $CC or you can steal GAS AS from old ndk such as r15c and point to it there
-        export AS=$TOOLCHAIN/bin/llvm-as
+        export AS=${CROSSTC}${CC}
         export CXX=$TOOLCHAIN/bin/$TARGET$API-clang++
         export LD=$TOOLCHAIN/bin/ld
         export RANLIB=$TOOLCHAIN/bin/llvm-ranlib
