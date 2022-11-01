@@ -20,7 +20,7 @@ case "$1" in
         export CXX=$TOOLCHAIN/bin/$TARGET$API-clang++
         export RANLIB=$TOOLCHAIN/bin/llvm-ranlib
         export STRIP=$TOOLCHAIN/bin/llvm-strip
-        make -C luajit HOST_CC=${CC} STATIC_CC=${CROSSTC}${CC} DYNAMIC_CC=${CROSSTC}${CC} TARGET_LD=$TOOLCHAIN/bin/ld CFLAGS="-O2 -mfloat-abi=softfp -mfpu=neon -march=armv7-a" HOST_CFLAGS="-O2 -mfloat-abi=softfp -mfpu=neon -march=armv7-a" TARGET_CFLAGS="${CFLAGS}" CROSS=${CROSSTC} DESTDIR="${DEST}"
+        make -C luajit HOST_CC=${CC} STATIC_CC=${CROSSTC}${CC} DYNAMIC_CC=${CROSSTC}${CC} TARGET_LD=$TOOLCHAIN/bin/ld CFLAGS="-O2 -mfloat-abi=softfp -mfpu=neon -march=armv7" HOST_CFLAGS="-O2 -mfloat-abi=softfp -mfpu=neon -march=armv7" TARGET_CFLAGS="${CFLAGS}" CROSS=${CROSSTC} DESTDIR="${DEST}"
         ;;
     arm64-v8a)
         export TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/$HOST_ARCH
@@ -35,7 +35,7 @@ case "$1" in
         export LD=$TOOLCHAIN/bin/ld
         export RANLIB=$TOOLCHAIN/bin/llvm-ranlib
         export STRIP=$TOOLCHAIN/bin/llvm-strip
-        make -C luajit HOST_CC=${CC} STATIC_CC=${CROSSTC}${CC} DYNAMIC_CC=${CROSSTC}${CC} TARGET_LD=$TOOLCHAIN/bin/ld CFLAGS="-O2 -mfloat-abi=softfp -mfpu=neon -march=armv8-a" HOST_CFLAGS="-O2 -mfloat-abi=softfp -mfpu=neon -march=armv8-a" TARGET_CFLAGS="${CFLAGS}" CROSS=${CROSSTC} DESTDIR="${DEST}"
+        make -C luajit HOST_CC=${CC} STATIC_CC=${CROSSTC}${CC} DYNAMIC_CC=${CROSSTC}${CC} TARGET_LD=$TOOLCHAIN/bin/ld CFLAGS="-O2 -mfloat-abi=softfp -mfpu=neon -march=armv8" HOST_CFLAGS="-O2 -mfloat-abi=softfp -mfpu=neon -march=armv8" TARGET_CFLAGS="${CFLAGS}" CROSS=${CROSSTC} DESTDIR="${DEST}"
         ;;
     x86-android)
         export TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/$HOST_ARCH
@@ -70,10 +70,6 @@ case "$1" in
     x86_64-linux)
         export CFLAGS="-O2"
         make -C luajit CFLAGS="-O2" HOST_CFLAGS="-O2" TARGET_CFLAGS="${CFLAGS}"
-        ;;
-    x86-linux)
-        export CFLAGS="-m32 -O2"
-        make -C luajit CFLAGS="-m32 -O2" HOST_CFLAGS="-m32 -O2" TARGET_CFLAGS="${CFLAGS}"
         ;;
     *)
         echo 'specify one of "armeabi-v7a", "arm64-v8a", "x86", "x86_64" or "clean" as first argument'
