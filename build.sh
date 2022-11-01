@@ -8,6 +8,7 @@ rm luajit/src/Makefile
 cp -f Makefile luajit/src/Makefile
 
 $NDK/toolchains/llvm/prebuilt/$HOST_ARCH/bin/ld --help
+$NDK/toolchains/llvm/prebuilt/$HOST_ARCH/bin/ld --help-hidden
 
 case "$1" in
     clean)
