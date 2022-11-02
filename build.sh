@@ -20,7 +20,6 @@ case "$1" in
         export CXX=$TOOLCHAIN/bin/$TARGET$API-clang++
         export RANLIB=$TOOLCHAIN/bin/llvm-ranlib
         export STRIP=$TOOLCHAIN/bin/llvm-strip
-        export LIBSROOT=$TOOLCHAIN/sysroot/usr/lib/arm-linux-androideabi/$API
         rm luajit/src/Makefile
         cp -f Makefile luajit/src/Makefile
         $TOOLCHAIN/bin/ld --help
