@@ -220,7 +220,8 @@ TARGET_DYLIBNAME= libluajit-$(ABIVER).$(MAJVER).dylib
 TARGET_DYLIBPATH= $(TARGET_LIBPATH)/$(TARGET_DYLIBNAME)
 TARGET_DLLNAME= lua$(NODOTABIVER).dll
 TARGET_DLLDOTANAME= libluajit-$(ABIVER).dll.a
-TARGET_XSHLDFLAGS= -shared --target=$(TARGET) -Wl --soname=$(TARGET_SONAME)
+TARGET_XSHLDFLAGS= -shared --target=$(TARGET) -Wl -install_name=$(TARGET_SONAME) -lpthread
+# (sirox): -lpthread - maybe better performance because of threads?
 TARGET_DYNXLDOPTS=
 
 TARGET_LFSFLAGS= -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE
