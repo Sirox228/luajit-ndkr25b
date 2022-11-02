@@ -22,7 +22,7 @@ case "$1" in
         export STRIP=$TOOLCHAIN/bin/llvm-strip
         rm luajit/src/Makefile
         cp -f Makefile luajit/src/Makefile
-        $TOOLCHAIN/bin/ld
+        $TOOLCHAIN/bin/ld --help
         make -C luajit CC="${CC} -m32" HOST_CC="${CC} -m32" STATIC_CC=${CROSSTC}${CC} DYNAMIC_CC=${CROSSTC}${CC} TARGET_LD=${CROSSTC}${CC} CFLAGS="-O2" HOST_CFLAGS="-O2" TARGET_CFLAGS="${CFLAGS}" CROSS=${CROSSTC} DESTDIR="${DEST}"
         ;;
     arm64-v8a)
