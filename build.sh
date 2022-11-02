@@ -4,11 +4,6 @@ DEST=$(pwd)/build/$1
 
 HOST_ARCH="linux-x86_64"
 
-rm luajit/src/Makefile
-cp -f Makefile luajit/src/Makefile
-
-$NDK/toolchains/llvm/prebuilt/$HOST_ARCH/bin/ld --help
-
 case "$1" in
     clean)
         make -C luajit clean
@@ -25,6 +20,9 @@ case "$1" in
         export CXX=$TOOLCHAIN/bin/$TARGET$API-clang++
         export RANLIB=$TOOLCHAIN/bin/llvm-ranlib
         export STRIP=$TOOLCHAIN/bin/llvm-strip
+        rm luajit/src/Makefile
+        cp -f Makefile luajit/src/Makefile
+        $NDK/toolchains/llvm/prebuilt/$HOST_ARCH/bin/ld --help
         make -C luajit CC=${CC} HOST_CC="${CC} -m32" STATIC_CC=${CROSSTC}${CC} DYNAMIC_CC=${CROSSTC}${CC} TARGET_LD=$TOOLCHAIN/bin/ld CFLAGS="-O2" HOST_CFLAGS="-O2" TARGET_CFLAGS="${CFLAGS}" CROSS=${CROSSTC} DESTDIR="${DEST}"
         ;;
     arm64-v8a)
@@ -40,6 +38,8 @@ case "$1" in
         export LD=$TOOLCHAIN/bin/ld
         export RANLIB=$TOOLCHAIN/bin/llvm-ranlib
         export STRIP=$TOOLCHAIN/bin/llvm-strip
+        rm luajit/src/Makefile
+        cp -f Makefile luajit/src/Makefile
         make -C luajit CC=${CC} HOST_CC=${CC} STATIC_CC=${CROSSTC}${CC} DYNAMIC_CC=${CROSSTC}${CC} TARGET_LD=$TOOLCHAIN/bin/ld CFLAGS="-O2" HOST_CFLAGS="-O2" TARGET_CFLAGS="${CFLAGS}" CROSS=${CROSSTC} DESTDIR="${DEST}"
         ;;
     x86-android)
@@ -55,6 +55,8 @@ case "$1" in
         export LD=$TOOLCHAIN/bin/ld
         export RANLIB=$TOOLCHAIN/bin/llvm-ranlib
         export STRIP=$TOOLCHAIN/bin/llvm-strip
+        rm luajit/src/Makefile
+        cp -f Makefile luajit/src/Makefile
         make -C luajit CC=${CC} HOST_CC="${CC} -m32" STATIC_CC=${CROSSTC}${CC} DYNAMIC_CC=${CROSSTC}${CC} TARGET_LD=$TOOLCHAIN/bin/ld CFLAGS="-O2" HOST_CFLAGS="-O2" TARGET_CFLAGS="${CFLAGS}" CROSS=${CROSSTC} DESTDIR="${DEST}"
         ;;
     x86_64-android)
@@ -70,6 +72,8 @@ case "$1" in
         export LD=$TOOLCHAIN/bin/ld
         export RANLIB=$TOOLCHAIN/bin/llvm-ranlib
         export STRIP=$TOOLCHAIN/bin/llvm-strip
+        rm luajit/src/Makefile
+        cp -f Makefile luajit/src/Makefile
         make -C luajit CC=${CC} HOST_CC=${CC} STATIC_CC=${CROSSTC}${CC} DYNAMIC_CC=${CROSSTC}${CC} TARGET_LD=$TOOLCHAIN/bin/ld CFLAGS="-O2" HOST_CFLAGS="-O2" TARGET_CFLAGS="${CFLAGS}" CROSS=${CROSSTC} DESTDIR="${DEST}"
         ;;
     x86_64-linux)
