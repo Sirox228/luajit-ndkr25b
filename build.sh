@@ -22,7 +22,8 @@ case "$1" in
         export STRIP=$TOOLCHAIN/bin/llvm-strip
         rm luajit/src/Makefile
         cp -f Makefile luajit/src/Makefile
-        $TOOLCHAIN/bin/ld --help
+        cp $TOOLCHAIN/sysroot/usr/lib/arm-linux-androideabi/$API/crtbegin_so.o luajit/src/crtbegin_so.o
+        cp $TOOLCHAIN/sysroot/usr/lib/arm-linux-androideabi/$API/crtend_so.o luajit/src/crtend_so.o
         make -C luajit CC="${CC} -m32" HOST_CC="${CC} -m32" STATIC_CC=${CROSSTC}${CC} DYNAMIC_CC=${CROSSTC}${CC} TARGET_LD="${CXX}" CFLAGS="-O2" HOST_CFLAGS="-O2" TARGET_CFLAGS="${CFLAGS}" CROSS=${CROSSTC} DESTDIR="${DEST}"
         ;;
     arm64-v8a)
