@@ -347,10 +347,10 @@ else
     endif
   endif
   ifeq (Linux,$(TARGET_SYS))
-    TARGET_XLIBS+=
+    TARGET_XLIBS+= -ldl
   endif
   ifeq (GNU/kFreeBSD,$(TARGET_SYS))
-    TARGET_XLIBS+=
+    TARGET_XLIBS+= -ldl
   endif
 endif
 endif
@@ -385,7 +385,7 @@ endif
 ##############################################################################
 
 MINILUA_O= host/minilua.o
-MINILUA_LIBS= -lpthread
+MINILUA_LIBS= -lm
 MINILUA_T= host/minilua
 MINILUA_X= $(MINILUA_T)
 
